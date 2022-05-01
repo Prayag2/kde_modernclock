@@ -10,6 +10,7 @@
         "Description": "A modern looking clock widget for your Desktop!",
         "Icon": "clock",
         "Id": "com.github.prayag2.modernclock",
+        "License": "GPLv3",
         "Name": "Modern Clock",
         "ServiceTypes": [
             "Plasma/Applet"
