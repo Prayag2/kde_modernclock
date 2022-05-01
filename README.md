@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/Prayag2/kde_modernclock/blob/main/assets/logo.png" width=100/>
   <h2 align="center">Modern Clock for KDE</h2>
-  <center>A modern looking clock widget!</center>
+  <p align="center">A modern looking clock widget!</center>
 </p>
 
 <p align="center">
