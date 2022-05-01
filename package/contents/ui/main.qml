@@ -1,0 +1,99 @@
+import QtQml 2.0
+import QtQuick 2.0
+import QtQuick.Layouts 1.0
+import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.core 2.0 as PlasmaCore
+
+Item {
+    id: root
+    
+    
+    // setting background as transparent with a drop shadow
+    Plasmoid.backgroundHints: PlasmaCore.Types.ShadowBackground | PlasmaCore.Types.ConfigurableBackground
+    
+    // loading fonts
+    FontLoader {
+        id: font_anurati
+        source: "../fonts/Anurati.otf"
+    }
+    FontLoader {
+        id: font_poppins
+        source: "../fonts/Poppins.ttf"
+    }
+
+    // setting preferred size
+    Plasmoid.preferredRepresentation: plasmoid.fullRepresentation
+    Plasmoid.fullRepresentation: Item {
+
+        // applet default size
+        Layout.minimumWidth: container.implicitWidth
+        Layout.minimumHeight: container.implicitHeight
+        Layout.preferredWidth: Layout.minimumWidth
+        Layout.preferredHeight: Layout.minimumHeight
+
+
+        // Updating time every minute
+        PlasmaCore.DataSource {
+            id: dataSource
+            engine: "time"
+            connectedSources: ["Local"]
+            intervalAlignment: PlasmaCore.Types.AlignToMinute
+            interval: 60000
+            onDataChanged: {
+                var curDate = dataSource.data["Local"]["DateTime"]
+                display_day.text = Qt.formatDate(curDate, "dddd").toUpperCase()
+                display_date.text = Qt.formatDate(curDate, "dd MMM yyyy").toUpperCase()
+                display_time.text = Qt.formatTime(curDate, "- hh:mm AP -")
+            }
+        }
+
+        // Main Content
+        Column {
+            id: container
+
+            // Column settings
+            anchors.centerIn: parent
+            spacing: 5
+
+            // The day ("Tuesday", "Wednesday" etc..)
+            PlasmaComponents.Label {
+                id: display_day
+
+                // font settings
+                font.pixelSize: plasmoid.configuration.day_font_size
+                font.letterSpacing: plasmoid.configuration.day_letter_spacing
+                font.family: font_anurati.name
+                color: plasmoid.configuration.font_color
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Text.AlignHCenter 
+            }
+
+            // The Date
+            PlasmaComponents.Label {
+                id: display_date
+
+                // font settings
+                font.pixelSize: plasmoid.configuration.date_font_size
+                font.letterSpacing: plasmoid.configuration.date_letter_spacing
+                font.family: font_poppins.name
+                color: plasmoid.configuration.font_color
+                horizontalAlignment: Text.AlignHCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+
+            // The Time
+            PlasmaComponents.Label {
+                id: display_time
+
+                // font settings
+                font.pixelSize: plasmoid.configuration.time_font_size
+                font.family: font_poppins.name
+                color: plasmoid.configuration.font_color
+                font.letterSpacing: plasmoid.configuration.time_letter_spacing
+                horizontalAlignment: Text.AlignHCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+        }
+    }
+}
