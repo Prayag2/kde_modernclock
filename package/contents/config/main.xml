@@ -18,6 +18,9 @@
         <entry name="date_letter_spacing" type="Int">
             <default>3</default>
         </entry>
+        <entry name="date_format" type="String">
+            <default>dd MMM yyyy</default>
+        </entry>
         <entry name="time_font_size" type="Int">
             <default>19</default>
         </entry>
@@ -26,6 +29,12 @@
         </entry>
         <entry name="font_color" type="Color">
             <default>#FFFFFF</default>
+        </entry>
+        <entry name="use_24_hour_format" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="time_character" type="String">
+            <default>-</default>
         </entry>
     </group>
 </kcfg> 

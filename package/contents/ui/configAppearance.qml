@@ -16,6 +16,9 @@ Column {
     property alias cfg_date_letter_spacing: dateLetterSpacing.value
     property alias cfg_time_letter_spacing: timeLetterSpacing.value
     property alias cfg_font_color: colordialog.color
+    property alias cfg_use_24_hour_format: use24HourFormat.checked
+    property alias cfg_time_character: timeCharacter.text
+    property alias cfg_date_format: dateFormat.text
 
     // size
     spacing: 5 
@@ -43,6 +46,14 @@ Column {
         id: dateLetterSpacing
         label: i18n("Letter Spacing")
     }
+    RowLayout {
+        Label {
+            text: i18n("Date format")
+        }
+        TextField {
+            id: dateFormat
+        }
+    }
 
     
     Title {
@@ -55,6 +66,23 @@ Column {
     NumberField {
         id: timeLetterSpacing
         label: i18n("Letter Spacing")
+    }
+    RowLayout {
+        Label {
+            text: i18n("Use 24 hour format")
+        }
+        CheckBox {
+            id: use24HourFormat
+        }
+    }
+    RowLayout {
+        Label {
+            text: i18n("Style Character")
+        }
+        TextField {
+            id: timeCharacter
+            maximumLength: 1
+        }
     }
     
     

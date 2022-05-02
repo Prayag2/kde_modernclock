@@ -22,6 +22,9 @@ Item {
         source: "../fonts/Poppins.ttf"
     }
 
+    
+    
+
     // setting preferred size
     Plasmoid.preferredRepresentation: plasmoid.fullRepresentation
     Plasmoid.fullRepresentation: Item {
@@ -40,12 +43,24 @@ Item {
             connectedSources: ["Local"]
             intervalAlignment: PlasmaCore.Types.AlignToMinute
             interval: 60000
+
+            property bool use24HourFormat: plasmoid.configuration.use_24_hour_format
+            property string timeCharacter: plasmoid.configuration.time_character
+            property string dateFormat: plasmoid.configuration.date_format
+            
+            onUse24HourFormatChanged: dataChanged()
+            onTimeCharacterChanged: dataChanged()
+            onDateFormatChanged: dataChanged()
+
             onDataChanged: {
+                var time_format = use24HourFormat ? "hh:mm" : "hh:mm AP"
                 var curDate = dataSource.data["Local"]["DateTime"]
                 display_day.text = Qt.formatDate(curDate, "dddd").toUpperCase()
-                display_date.text = Qt.formatDate(curDate, "dd MMM yyyy").toUpperCase()
-                display_time.text = Qt.formatTime(curDate, "- hh:mm AP -")
+                display_date.text = Qt.formatDate(curDate, dateFormat).toUpperCase()
+                display_time.text = timeCharacter + " " + Qt.formatTime(curDate, time_format) + " " + timeCharacter
             }
+
+            
         }
 
         // Main Content
