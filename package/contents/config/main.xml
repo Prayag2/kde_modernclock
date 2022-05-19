@@ -12,6 +12,9 @@
         <entry name="day_letter_spacing" type="Int">
             <default>17</default>
         </entry>
+        <entry name="show_day" type="Bool">
+            <default>true</default>
+        </entry>
         <entry name="date_font_size" type="Int">
             <default>19</default>
         </entry>
@@ -21,13 +24,25 @@
         <entry name="date_format" type="String">
             <default>dd MMM yyyy</default>
         </entry>
+        <entry name="show_date" type="Bool">
+            <default>true</default>
+        </entry>
         <entry name="time_font_size" type="Int">
             <default>19</default>
         </entry>
         <entry name="time_letter_spacing" type="Int">
             <default>3</default>
         </entry>
-        <entry name="font_color" type="Color">
+        <entry name="time_font_color" type="Color">
+            <default>#FFFFFF</default>
+        </entry>
+        <entry name="show_time" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="date_font_color" type="Color">
+            <default>#FFFFFF</default>
+        </entry>
+        <entry name="day_font_color" type="Color">
             <default>#FFFFFF</default>
         </entry>
         <entry name="use_24_hour_format" type="Bool">

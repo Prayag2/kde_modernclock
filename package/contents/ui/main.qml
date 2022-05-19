@@ -74,12 +74,15 @@ Item {
             // The day ("Tuesday", "Wednesday" etc..)
             PlasmaComponents.Label {
                 id: display_day
+                
+                // visible
+                visible: plasmoid.configuration.show_day
 
                 // font settings
                 font.pixelSize: plasmoid.configuration.day_font_size
                 font.letterSpacing: plasmoid.configuration.day_letter_spacing
                 font.family: font_anurati.name
-                color: plasmoid.configuration.font_color
+                color: plasmoid.configuration.day_font_color
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter 
             }
@@ -88,11 +91,14 @@ Item {
             PlasmaComponents.Label {
                 id: display_date
 
+                // visibility
+                visible: plasmoid.configuration.show_date
+
                 // font settings
                 font.pixelSize: plasmoid.configuration.date_font_size
                 font.letterSpacing: plasmoid.configuration.date_letter_spacing
                 font.family: font_poppins.name
-                color: plasmoid.configuration.font_color
+                color: plasmoid.configuration.date_font_color
                 horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter
             }
@@ -101,10 +107,13 @@ Item {
             PlasmaComponents.Label {
                 id: display_time
 
+                // visibility
+                visible: plasmoid.configuration.show_time
+
                 // font settings
                 font.pixelSize: plasmoid.configuration.time_font_size
                 font.family: font_poppins.name
-                color: plasmoid.configuration.font_color
+                color: plasmoid.configuration.time_font_color
                 font.letterSpacing: plasmoid.configuration.time_letter_spacing
                 horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter

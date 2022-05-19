@@ -9,22 +9,35 @@ Column {
     id: appearancePage
     
     // properties
+    property alias cfg_show_day: showDay.checked
+    property alias cfg_show_date: showDate.checked
+    property alias cfg_show_time: showTime.checked
     property alias cfg_day_font_size: dayFontSize.value
     property alias cfg_date_font_size: dateFontSize.value
     property alias cfg_time_font_size: timeFontSize.value
     property alias cfg_day_letter_spacing: dayLetterSpacing.value
+    property alias cfg_day_font_color: dayFontColor.color
     property alias cfg_date_letter_spacing: dateLetterSpacing.value
     property alias cfg_time_letter_spacing: timeLetterSpacing.value
-    property alias cfg_font_color: colordialog.color
+    property alias cfg_time_font_color: timeFontColor.color
     property alias cfg_use_24_hour_format: use24HourFormat.checked
     property alias cfg_time_character: timeCharacter.text
     property alias cfg_date_format: dateFormat.text
+    property alias cfg_date_font_color: dateFontColor.color
 
     // size
     spacing: 5 
      
     Title {
         title: i18n("Day")
+    }
+    RowLayout {
+        Label {
+            text: i18n("Show Day")
+        }
+        CheckBox {
+            id: showDay
+        }
     }
     NumberField {
         id: dayFontSize
@@ -34,9 +47,20 @@ Column {
         id: dayLetterSpacing
         label: i18n("Letter Spacing")
     }
-   
+    ColorDial {
+        id: dayFontColor 
+        color: cfg_day_font_color
+    }
     Title {
         title: i18n("Date")
+    }
+    RowLayout {
+        Label {
+            text: i18n("Show Date")
+        }
+        CheckBox {
+            id: showDate
+        }
     }
     NumberField {
         id: dateFontSize
@@ -54,10 +78,22 @@ Column {
             id: dateFormat
         }
     }
+    ColorDial {
+        id: dateFontColor
+        color: cfg_date_font_color
+    }
 
     
     Title {
         title: i18n("Time")
+    }
+    RowLayout {
+        Label {
+            text: i18n("Show Time")
+        }
+        CheckBox {
+            id: showTime
+        }
     }
     NumberField {
         id: timeFontSize
@@ -84,34 +120,9 @@ Column {
             maximumLength: 1
         }
     }
+    ColorDial {
+        id: timeFontColor
+        color: cfg_time_font_color
+    }
     
-    
-    Title {
-        title: i18n("Font Settings") 
-    }
-    RowLayout {
-        Label {
-            text: i18n("Font Color")
-        }             
-        Rectangle {
-            id: colorbutton
-            height: PlasmaCore.Units.gridUnit * 1.3; width: height
-            border.width: 1
-            border.color: "gray"
-            color: cfg_font_color
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    colordialog.visible=true
-                }
-            }
-        }
-    }
-    ColorDialog {
-        id: colordialog
-        title: i18n("Select a color")
-        onAccepted: {
-            cfg_font_color=color
-        }
-    }
 }

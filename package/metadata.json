@@ -15,7 +15,7 @@
         "ServiceTypes": [
             "Plasma/Applet"
         ],
-        "Version": "0.0.1",
+        "Version": "0.2.0",
         "Website": "https://github.com/prayag2/kde_modernclock"
         
     },
