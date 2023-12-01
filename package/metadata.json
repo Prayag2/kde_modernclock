@@ -15,11 +15,9 @@
         "ServiceTypes": [
             "Plasma/Applet"
         ],
-        "Version": "0.2.0",
+        "Version": "0.3.0",
         "Website": "https://github.com/prayag2/kde_modernclock"
         
     },
-    "X-Plasma-API": "declarativeappletscript",
-    "X-Plasma-MainScript": "ui/main.qml",
     "X-Plasma-Provides": "org.kde.plasma.time,org.kde.plasma.date"
 }
