@@ -30,13 +30,6 @@ PlasmoidItem {
     preferredRepresentation: fullRepresentation
     fullRepresentation: Item {
 
-        // applet default size
-        Layout.minimumWidth: container.implicitWidth
-        Layout.minimumHeight: container.implicitHeight
-        Layout.preferredWidth: Layout.minimumWidth
-        Layout.preferredHeight: Layout.minimumHeight
-
-
         // Updating time every minute
         Plasma5Support.DataSource {
             id: dataSource
