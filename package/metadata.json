@@ -12,12 +12,11 @@
         "Id": "com.github.prayag2.modernclock",
         "License": "GPLv3",
         "Name": "Modern Clock",
-        "ServiceTypes": [
-            "Plasma/Applet"
-        ],
         "Version": "0.3.0",
         "Website": "https://github.com/prayag2/kde_modernclock"
         
     },
-    "X-Plasma-Provides": "org.kde.plasma.time,org.kde.plasma.date"
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-Provides": "org.kde.plasma.time,org.kde.plasma.date",
+    "KPackageStructure": "Plasma/Applet"
 }
