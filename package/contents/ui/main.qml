@@ -22,13 +22,17 @@ PlasmoidItem {
         id: font_poppins
         source: "../fonts/Poppins.ttf"
     }
-
-    
     
 
     // setting preferred size
     preferredRepresentation: fullRepresentation
     fullRepresentation: Item {
+
+        // applet default size
+        Layout.minimumWidth: container.implicitWidth
+        Layout.minimumHeight: container.implicitHeight
+        Layout.preferredWidth: Layout.minimumWidth
+        Layout.preferredHeight: Layout.minimumHeight
 
         // Updating time every minute
         Plasma5Support.DataSource {
