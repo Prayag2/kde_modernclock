@@ -1,11 +1,12 @@
-import QtQml 2.0
+import QtQml 2.15
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
-import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.components as PlasmaComponents
+import org.kde.plasma.plasmoid
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasma5support as Plasma5Support
 
-Item {
+PlasmoidItem {
     id: root
     
     
@@ -26,22 +27,15 @@ Item {
     
 
     // setting preferred size
-    Plasmoid.preferredRepresentation: plasmoid.fullRepresentation
-    Plasmoid.fullRepresentation: Item {
-
-        // applet default size
-        Layout.minimumWidth: container.implicitWidth
-        Layout.minimumHeight: container.implicitHeight
-        Layout.preferredWidth: Layout.minimumWidth
-        Layout.preferredHeight: Layout.minimumHeight
-
+    preferredRepresentation: fullRepresentation
+    fullRepresentation: Item {
 
         // Updating time every minute
-        PlasmaCore.DataSource {
+        Plasma5Support.DataSource {
             id: dataSource
             engine: "time"
             connectedSources: ["Local"]
-            intervalAlignment: PlasmaCore.Types.AlignToMinute
+            intervalAlignment: Plasma5Support.Types.AlignToMinute
             interval: 60000
 
             property bool use24HourFormat: plasmoid.configuration.use_24_hour_format

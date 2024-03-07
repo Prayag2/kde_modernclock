@@ -1,11 +1,10 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.0
-import QtQuick.Dialogs 1.0
+import QtQuick.Dialogs
+import org.kde.kirigami 2.4 as Kirigami
 
-import org.kde.plasma.core 2.0 as PlasmaCore
-
-Column {
+Kirigami.ScrollablePage {
     id: appearancePage
     
     // properties
@@ -25,104 +24,101 @@ Column {
     property alias cfg_date_format: dateFormat.text
     property alias cfg_date_font_color: dateFontColor.color
 
-    // size
-    spacing: 5 
-     
-    Title {
-        title: i18n("Day")
-    }
-    RowLayout {
-        Label {
-            text: i18n("Show Day")
+    Kirigami.FormLayout {
+        Title {
+            title: i18n("Day")
         }
-        CheckBox {
-            id: showDay
+        RowLayout {
+            Label {
+                text: i18n("Show Day")
+            }
+            CheckBox {
+                id: showDay
+            }
         }
-    }
-    NumberField {
-        id: dayFontSize
-        label: i18n("Font Size")
-    }
-    NumberField {
-        id: dayLetterSpacing
-        label: i18n("Letter Spacing")
-    }
-    ColorDial {
-        id: dayFontColor 
-        color: cfg_day_font_color
-    }
-    Title {
-        title: i18n("Date")
-    }
-    RowLayout {
-        Label {
-            text: i18n("Show Date")
+        NumberField {
+            id: dayFontSize
+            label: i18n("Font Size")
         }
-        CheckBox {
-            id: showDate
+        NumberField {
+            id: dayLetterSpacing
+            label: i18n("Letter Spacing")
         }
-    }
-    NumberField {
-        id: dateFontSize
-        label: i18n("Font Size")
-    }
-    NumberField {
-        id: dateLetterSpacing
-        label: i18n("Letter Spacing")
-    }
-    RowLayout {
-        Label {
-            text: i18n("Date format")
+        ColorDial {
+            id: dayFontColor
+            color: cfg_day_font_color
         }
-        TextField {
-            id: dateFormat
+        Title {
+            title: i18n("Date")
         }
-    }
-    ColorDial {
-        id: dateFontColor
-        color: cfg_date_font_color
-    }
+        RowLayout {
+            Label {
+                text: i18n("Show Date")
+            }
+            CheckBox {
+                id: showDate
+            }
+        }
+        NumberField {
+            id: dateFontSize
+            label: i18n("Font Size")
+        }
+        NumberField {
+            id: dateLetterSpacing
+            label: i18n("Letter Spacing")
+        }
+        RowLayout {
+            Label {
+                text: i18n("Date format")
+            }
+            TextField {
+                id: dateFormat
+            }
+        }
+        ColorDial {
+            id: dateFontColor
+            color: cfg_date_font_color
+        }
 
-    
-    Title {
-        title: i18n("Time")
-    }
-    RowLayout {
-        Label {
-            text: i18n("Show Time")
+        Title {
+            title: i18n("Time")
         }
-        CheckBox {
-            id: showTime
+        RowLayout {
+            Label {
+                text: i18n("Show Time")
+            }
+            CheckBox {
+                id: showTime
+            }
+        }
+        NumberField {
+            id: timeFontSize
+            label: i18n("Font Size")
+        }
+        NumberField {
+            id: timeLetterSpacing
+            label: i18n("Letter Spacing")
+        }
+        RowLayout {
+            Label {
+                text: i18n("Use 24 hour format")
+            }
+            CheckBox {
+                id: use24HourFormat
+            }
+        }
+        RowLayout {
+            Label {
+                text: i18n("Style Character")
+            }
+            TextField {
+                id: timeCharacter
+                maximumLength: 1
+            }
+        }
+        ColorDial {
+            id: timeFontColor
+            color: cfg_time_font_color
         }
     }
-    NumberField {
-        id: timeFontSize
-        label: i18n("Font Size")
-    }
-    NumberField {
-        id: timeLetterSpacing
-        label: i18n("Letter Spacing")
-    }
-    RowLayout {
-        Label {
-            text: i18n("Use 24 hour format")
-        }
-        CheckBox {
-            id: use24HourFormat
-        }
-    }
-    RowLayout {
-        Label {
-            text: i18n("Style Character")
-        }
-        TextField {
-            id: timeCharacter
-            maximumLength: 1
-        }
-    }
-    ColorDial {
-        id: timeFontColor
-        color: cfg_time_font_color
-    }
-    
 }
