@@ -27,4 +27,4 @@
 1. Clone this repository  
 `git clone https://github.com/prayag2/kde_modernclock && cd kde_modernclock/`  
 2. Install using the script  
-`kpackagetool5 -i package`
+`kpackagetool6 -i kde_modernclock/package/ -t Plasma/Applet`
