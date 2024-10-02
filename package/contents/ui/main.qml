@@ -53,8 +53,8 @@ PlasmoidItem {
             onDataChanged: {
                 var time_format = use24HourFormat ? "hh:mm" : "hh:mm AP"
                 var curDate = dataSource.data["Local"]["DateTime"]
-                display_day.text = Qt.formatDate(curDate, "dddd").toUpperCase()
-                display_date.text = Qt.formatDate(curDate, dateFormat).toUpperCase()
+                display_day.text = curDate.toLocaleString(Qt.locale(), "dddd").toUpperCase()
+                display_date.text = curDate.toLocaleString(Qt.locale(), dateFormat).toUpperCase()
                 display_time.text = timeCharacter + " " + Qt.formatTime(curDate, time_format) + " " + timeCharacter
             }
 
