@@ -9,6 +9,9 @@
         <entry name="day_font_size" type="Int">
             <default>72</default>
         </entry>
+        <entry name="day_font_family" type="String">
+            <default>Anurati</default>
+        </entry>
         <entry name="day_letter_spacing" type="Int">
             <default>17</default>
         </entry>
@@ -17,6 +20,9 @@
         </entry>
         <entry name="date_font_size" type="Int">
             <default>19</default>
+        </entry>
+        <entry name="date_font_family" type="String">
+            <default>Poppins</default>
         </entry>
         <entry name="date_letter_spacing" type="Int">
             <default>3</default>
@@ -29,6 +35,9 @@
         </entry>
         <entry name="time_font_size" type="Int">
             <default>19</default>
+        </entry>
+        <entry name="time_font_family" type="String">
+            <default>Poppins</default>
         </entry>
         <entry name="time_letter_spacing" type="Int">
             <default>3</default>
