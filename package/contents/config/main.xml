@@ -48,8 +48,11 @@
         <entry name="use_24_hour_format" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="follow_system_text_color" type="Bool">
+            <default>true</default>
+        </entry>
         <entry name="time_character" type="String">
             <default>-</default>
         </entry>
     </group>
-</kcfg> 
+</kcfg>
