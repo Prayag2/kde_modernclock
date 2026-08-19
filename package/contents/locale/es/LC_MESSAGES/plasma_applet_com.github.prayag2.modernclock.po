@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Modern Clock 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-08-18 20:00-0300\n"
+"Last-Translator: jesus <jesus14sf@gmail.com>\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "Date format"
+msgstr "Formato de fecha"
+
+msgid "Day"
+msgstr "Día"
+
+msgid "Font Color"
+msgstr "Color de fuente"
+
+msgid "Font Size"
+msgstr "Tamaño de fuente"
+
+msgid "Letter Spacing"
+msgstr "Espaciado de letras"
+
+msgid "Select a color"
+msgstr "Seleccionar un color"
+
+msgid "Show Date"
+msgstr "Mostrar fecha"
+
+msgid "Show Day"
+msgstr "Mostrar día"
+
+msgid "Show Time"
+msgstr "Mostrar hora"
+
+msgid "Style Character"
+msgstr "Carácter de estilo"
+
+msgid "Time"
+msgstr "Hora"
+
+msgid "Use 24 hour format"
+msgstr "Usar formato de 24 horas"
