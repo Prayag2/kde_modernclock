@@ -8,11 +8,57 @@ import org.kde.plasma.plasma5support as Plasma5Support
 
 PlasmoidItem {
     id: root
-    
-    
+
+
     // setting background as transparent with a drop shadow
     Plasmoid.backgroundHints: PlasmaCore.Types.ShadowBackground | PlasmaCore.Types.ConfigurableBackground
-    
+
+    // Qt.formatDate()'s "dddd"/"MMM"/"MMMM" tokens ignore the active locale on recent Qt6
+    // builds (Qt.locale().name is correct, but the day/month names come back in English) -
+    // build the string manually from QLocale's dayName()/monthName(), which are correctly
+    // localized.
+    function formatLocalizedDate(date, format) {
+        var loc = Qt.locale()
+        var day = date.getDate()
+        var dow = date.getDay()
+        var month = date.getMonth()
+        var year = date.getFullYear()
+        var pad2 = function(n) { return (n < 10 ? "0" : "") + n }
+
+        var result = ""
+        var i = 0
+        while (i < format.length) {
+            var c = format.charAt(i)
+            var run = c
+            var j = i + 1
+            while (j < format.length && format.charAt(j) === c) {
+                run += c
+                j++
+            }
+            switch (c) {
+            case "d":
+                if (run === "dddd") result += loc.dayName(dow, Locale.LongFormat)
+                else if (run === "ddd") result += loc.dayName(dow, Locale.ShortFormat)
+                else if (run === "dd") result += pad2(day)
+                else result += day
+                break
+            case "M":
+                if (run === "MMMM") result += loc.monthName(month, Locale.LongFormat)
+                else if (run === "MMM") result += loc.monthName(month, Locale.ShortFormat)
+                else if (run === "MM") result += pad2(month + 1)
+                else result += (month + 1)
+                break
+            case "y":
+                result += (run === "yy") ? pad2(year % 100) : year
+                break
+            default:
+                result += run
+            }
+            i = j
+        }
+        return result
+    }
+
     // loading fonts
     FontLoader {
         id: font_anurati
@@ -53,8 +99,8 @@ PlasmoidItem {
             onDataChanged: {
                 var time_format = use24HourFormat ? "hh:mm" : "hh:mm AP"
                 var curDate = dataSource.data["Local"]["DateTime"]
-                display_day.text = Qt.formatDate(curDate, "dddd").toUpperCase()
-                display_date.text = Qt.formatDate(curDate, dateFormat).toUpperCase()
+                display_day.text = formatLocalizedDate(curDate, "dddd").toUpperCase()
+                display_date.text = formatLocalizedDate(curDate, dateFormat).toUpperCase()
                 display_time.text = timeCharacter + " " + Qt.formatTime(curDate, time_format) + " " + timeCharacter
             }
 
