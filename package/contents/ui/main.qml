@@ -7,6 +7,10 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasma5support as Plasma5Support
 
 PlasmoidItem {
+    SystemPalette {
+        id: sysPalette
+        colorGroup: SystemPalette.Active
+    }
     id: root
     
     
@@ -80,9 +84,12 @@ PlasmoidItem {
                 font.pixelSize: plasmoid.configuration.day_font_size
                 font.letterSpacing: plasmoid.configuration.day_letter_spacing
                 font.family: font_anurati.name
-                color: plasmoid.configuration.day_font_color
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter 
+
+                color: plasmoid.configuration.follow_system_text_color
+                ? sysPalette.windowText
+                : plasmoid.configuration.day_font_color
             }
 
             // The Date
@@ -96,9 +103,12 @@ PlasmoidItem {
                 font.pixelSize: plasmoid.configuration.date_font_size
                 font.letterSpacing: plasmoid.configuration.date_letter_spacing
                 font.family: font_poppins.name
-                color: plasmoid.configuration.date_font_color
                 horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter
+
+                color: plasmoid.configuration.follow_system_text_color
+                ? sysPalette.windowText
+                : plasmoid.configuration.date_font_color
             }
 
             // The Time
@@ -111,10 +121,13 @@ PlasmoidItem {
                 // font settings
                 font.pixelSize: plasmoid.configuration.time_font_size
                 font.family: font_poppins.name
-                color: plasmoid.configuration.time_font_color
                 font.letterSpacing: plasmoid.configuration.time_letter_spacing
                 horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter
+
+                color: plasmoid.configuration.follow_system_text_color
+                ? sysPalette.windowText
+                : plasmoid.configuration.time_font_color
             }
         }
     }

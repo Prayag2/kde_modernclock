@@ -23,8 +23,13 @@ Kirigami.ScrollablePage {
     property alias cfg_time_character: timeCharacter.text
     property alias cfg_date_format: dateFormat.text
     property alias cfg_date_font_color: dateFontColor.color
+    property alias cfg_follow_system_text_color: followSystemTextColor.checked
 
     Kirigami.FormLayout {
+        RowLayout {
+            Label { text: i18n("Follow system text color") }
+            CheckBox { id: followSystemTextColor }
+        }
         Title {
             title: i18n("Day")
         }
@@ -47,6 +52,7 @@ Kirigami.ScrollablePage {
         ColorDial {
             id: dayFontColor
             color: cfg_day_font_color
+            enabled: !followSystemTextColor.checked
         }
         Title {
             title: i18n("Date")
@@ -78,6 +84,7 @@ Kirigami.ScrollablePage {
         ColorDial {
             id: dateFontColor
             color: cfg_date_font_color
+            enabled: !followSystemTextColor.checked
         }
 
         Title {
@@ -119,6 +126,7 @@ Kirigami.ScrollablePage {
         ColorDial {
             id: timeFontColor
             color: cfg_time_font_color
+            enabled: !followSystemTextColor.checked
         }
     }
 }
