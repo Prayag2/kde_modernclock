@@ -22,6 +22,7 @@ Kirigami.ScrollablePage {
     property alias cfg_use_24_hour_format: use24HourFormat.checked
     property alias cfg_time_character: timeCharacter.text
     property alias cfg_date_format: dateFormat.text
+    property alias cfg_use_system_date_locale: useSystemDateLocale.checked
     property alias cfg_date_font_color: dateFontColor.color
     property alias cfg_click_through: clickThrough.checked
     property alias cfg_follow_system_text_color: followSystemTextColor.checked
@@ -106,6 +107,14 @@ Kirigami.ScrollablePage {
         NumberField {
             id: dateLetterSpacing
             label: i18n("Letter Spacing")
+        }
+        RowLayout {
+            Label {
+                text: i18n("Use system language for date and weekday")
+            }
+            CheckBox {
+                id: useSystemDateLocale
+            }
         }
         RowLayout {
             Label {
