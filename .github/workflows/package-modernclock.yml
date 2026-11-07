@@ -1,0 +1,53 @@
+name: Package ModernClock test widget
+
+on:
+  push:
+    branches:
+      - Click-through
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create independently installable test package
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f package/metadata.json
+          test -f package/contents/ui/main.qml
+          cp -a package modernclock-test
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('modernclock-test/metadata.json')
+          metadata = json.loads(p.read_text(encoding='utf-8'))
+          metadata['KPlugin']['Id'] = 'com.github.citizenserious.modernclock.clickthrough-test-104'
+          metadata['KPlugin']['Name'] = 'Modern Clock (Click-through 1.0.4 Test)'
+          metadata['KPlugin']['Version'] = '1.0.4'
+          p.write_text(json.dumps(metadata, indent=4) + '\n', encoding='utf-8')
+          config = Path('modernclock-test/contents/config/main.xml')
+          text = config.read_text(encoding='utf-8')
+          text = text.replace('<entry name="click_through" type="Bool">\n            <default>false</default>',
+                              '<entry name="click_through" type="Bool">\n            <default>true</default>')
+          # Test defaults to English and 24h time; the user can change both.
+          text = text.replace('<entry name="use_24_hour_format" type="Bool">\n            <default>false</default>',
+                              '<entry name="use_24_hour_format" type="Bool">\n            <default>true</default>')
+          config.write_text(text, encoding='utf-8')
+          PY
+          (cd modernclock-test && zip -q -r ../ModernClock-Click-through-v1.0.4-Test.plasmoid metadata.json contents)
+          (cd package && zip -q -r ../ModernClock-v1.0.4.plasmoid metadata.json contents)
+
+      - name: Upload installable widgets
+        uses: actions/upload-artifact@v4
+        with:
+          name: ModernClock-v1.0.4-packages
+          path: |
+            ModernClock-Click-through-v1.0.4-Test.plasmoid
+            ModernClock-v1.0.4.plasmoid
+          if-no-files-found: error
