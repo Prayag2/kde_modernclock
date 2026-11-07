@@ -48,11 +48,23 @@
         <entry name="use_24_hour_format" type="Bool">
             <default>false</default>
         </entry>
-        <entry name="follow_system_text_color" type="Bool">
-            <default>true</default>
-        </entry>
         <entry name="time_character" type="String">
             <default>-</default>
         </entry>
+        <entry name="click_through" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="follow_system_text_color" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="day_font_family" type="String">
+            <default></default>
+        </entry>
+        <entry name="date_font_family" type="String">
+            <default></default>
+        </entry>
+        <entry name="time_font_family" type="String">
+            <default></default>
+        </entry>
     </group>
-</kcfg>
+</kcfg> 
