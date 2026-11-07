@@ -23,13 +23,29 @@ Kirigami.ScrollablePage {
     property alias cfg_time_character: timeCharacter.text
     property alias cfg_date_format: dateFormat.text
     property alias cfg_date_font_color: dateFontColor.color
+    property alias cfg_click_through: clickThrough.checked
     property alias cfg_follow_system_text_color: followSystemTextColor.checked
+    property alias cfg_day_font_family: dayFontFamily.text
+    property alias cfg_date_font_family: dateFontFamily.text
+    property alias cfg_time_font_family: timeFontFamily.text
 
     Kirigami.FormLayout {
+        RowLayout {
+            Label { text: i18n("Click-through on desktop") }
+            CheckBox { id: clickThrough }
+        }
+        Label {
+            text: i18n("When enabled, use Plasma edit mode to move or configure the clock.")
+            Layout.fillWidth: true
+            Layout.maximumWidth: 380
+            wrapMode: Text.WordWrap
+        }
+
         RowLayout {
             Label { text: i18n("Follow system text color") }
             CheckBox { id: followSystemTextColor }
         }
+
         Title {
             title: i18n("Day")
         }
@@ -45,14 +61,23 @@ Kirigami.ScrollablePage {
             id: dayFontSize
             label: i18n("Font Size")
         }
+        RowLayout {
+            Label { text: i18n("Font family") }
+            TextField {
+                id: dayFontFamily
+                Layout.fillWidth: true
+                placeholderText: i18n("Default (Anurati)")
+            }
+        }
+
         NumberField {
             id: dayLetterSpacing
             label: i18n("Letter Spacing")
         }
         ColorDial {
             id: dayFontColor
-            color: cfg_day_font_color
             enabled: !followSystemTextColor.checked
+            color: cfg_day_font_color
         }
         Title {
             title: i18n("Date")
@@ -69,6 +94,15 @@ Kirigami.ScrollablePage {
             id: dateFontSize
             label: i18n("Font Size")
         }
+        RowLayout {
+            Label { text: i18n("Font family") }
+            TextField {
+                id: dateFontFamily
+                Layout.fillWidth: true
+                placeholderText: i18n("Default (Poppins)")
+            }
+        }
+
         NumberField {
             id: dateLetterSpacing
             label: i18n("Letter Spacing")
@@ -83,8 +117,8 @@ Kirigami.ScrollablePage {
         }
         ColorDial {
             id: dateFontColor
-            color: cfg_date_font_color
             enabled: !followSystemTextColor.checked
+            color: cfg_date_font_color
         }
 
         Title {
@@ -102,6 +136,15 @@ Kirigami.ScrollablePage {
             id: timeFontSize
             label: i18n("Font Size")
         }
+        RowLayout {
+            Label { text: i18n("Font family") }
+            TextField {
+                id: timeFontFamily
+                Layout.fillWidth: true
+                placeholderText: i18n("Default (Poppins)")
+            }
+        }
+
         NumberField {
             id: timeLetterSpacing
             label: i18n("Letter Spacing")
@@ -125,8 +168,8 @@ Kirigami.ScrollablePage {
         }
         ColorDial {
             id: timeFontColor
-            color: cfg_time_font_color
             enabled: !followSystemTextColor.checked
+            color: cfg_time_font_color
         }
     }
 }
