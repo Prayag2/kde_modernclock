@@ -22,6 +22,7 @@ Kirigami.ScrollablePage {
     property alias cfg_use_24_hour_format: use24HourFormat.checked
     property alias cfg_time_character: timeCharacter.text
     property alias cfg_date_format: dateFormat.text
+    property string cfg_locale
     property alias cfg_date_font_color: dateFontColor.color
 
     Kirigami.FormLayout {
@@ -73,6 +74,23 @@ Kirigami.ScrollablePage {
             }
             TextField {
                 id: dateFormat
+            }
+        }
+        RowLayout {
+            Label {
+                text: i18n("Language")
+            }
+            ComboBox {
+                id: language
+                // "" = follow the system; the list shows each language in its own name
+                readonly property var codes: ["", "en_US", "en_GB", "fr_FR", "de_DE", "es_ES", "it_IT", "pt_BR",
+                                              "pt_PT", "nl_NL", "pl_PL", "cs_CZ", "sv_SE", "fi_FI", "tr_TR",
+                                              "ru_RU", "uk_UA", "el_GR", "ar_SA", "hi_IN", "ja_JP", "ko_KR",
+                                              "zh_CN", "zh_TW"]
+                model: codes.map(c => c === "" ? i18n("System default")
+                                               : Qt.locale(c).nativeLanguageName + " (" + c + ")")
+                currentIndex: Math.max(0, codes.indexOf(cfg_locale))
+                onActivated: (index) => cfg_locale = codes[index]
             }
         }
         ColorDial {

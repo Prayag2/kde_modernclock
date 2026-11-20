@@ -45,6 +45,10 @@
         <entry name="day_font_color" type="Color">
             <default>#FFFFFF</default>
         </entry>
+        <!-- Language for day and month names. Empty = follow the system locale. -->
+        <entry name="locale" type="String">
+            <default></default>
+        </entry>
         <entry name="use_24_hour_format" type="Bool">
             <default>false</default>
         </entry>
